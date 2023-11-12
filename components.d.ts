@@ -7,8 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ContentField: typeof import('./src/components/ContentField.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    GameMap: typeof import('./src/components/GameMap.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    MatchGround: typeof import('./src/components/MatchGround.vue')['default']
+    NavBar: typeof import('./src/components/NavBar.vue')['default']
+    PlayGround: typeof import('./src/components/PlayGround.vue')['default']
+    ResultBoard: typeof import('./src/components/ResultBoard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

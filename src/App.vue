@@ -1,4 +1,5 @@
 <template>
+  <Navbar></Navbar>
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
       <component :is="Component" />
@@ -6,14 +7,15 @@
   </router-view>
 </template>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.2s ease;
-}
+<script setup>
+import Navbar from '@/components/NavBar.vue';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap';
+</script>
 
-.fade-enter-from,
-.fade-leave-active {
-  opacity: 0;
+<style>
+body {
+  background-image: url('@/assets/images/background.png');
+  background-size: cover;
 }
 </style>

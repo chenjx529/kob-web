@@ -8,8 +8,7 @@ import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
-  // console.log('mode', loadEnv(mode, process.cwd()).VITE_BASE_URL);//使用loadEnv在vite.config.ts中读取环境变量
-  const baseUrl = loadEnv(mode, process.cwd()).VITE_BASE_URL;
+  const baseUrl = loadEnv(mode, process.cwd()).VITE_BASE_URL;  //使用loadEnv在vite.config.ts中读取环境变量
   return defineConfig({
     plugins: [
       vue(),
@@ -21,12 +20,12 @@ export default ({ mode }) => {
       }),
       {
         ...viteCompression(),
-        apply: 'build',
+        apply: 'build',  // build环境下打包
       },
     ],
     server: {
       host: '0.0.0.0',
-      port: 8080,
+      port: 8000,
       open: true,
       https: false,
       proxy: {
@@ -43,13 +42,6 @@ export default ({ mode }) => {
       alias: {
         '@': path.resolve('./src'), // @代替src
         '#': path.resolve('./types'), // #代替types
-      },
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "@/assets/styles/index.scss";',
-        },
       },
     },
     build: {

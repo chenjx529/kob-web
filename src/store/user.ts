@@ -6,27 +6,56 @@ export const useUserStore = defineStore('user', {
   state: () => {
     return {
       userInfo: {
-        name: 'zhangsan',
-        age: 23,
+        id: '001',
+        username: 'chenjx',
+        photo: 'https://www.jj.com',
+        is_login: true,
+        pulling_info: true, // 是否正在从云端拉取信息
+        token: '',
       },
-      token: 'S1',
     };
   },
   getters: {
-    newName: (state) => state.userInfo.name + 'vip',
+    userName: (state) => state.userInfo.username,
   },
   actions: {
-    //更新整个对象
-    updateUserInfo(userInfo: { name: string; age: number }) {
+    updateUserInfo(userInfo: {
+      id: string;
+      username: string;
+      photo: string;
+      is_login: boolean;
+      pulling_info: boolean;
+      token: string;
+    }) {
       this.userInfo = userInfo;
     },
-    //更新对象中某个属性
-    updateAge(age: number) {
-      this.userInfo.age = age;
+    updateId(id: string) {
+      this.userInfo.id = id;
     },
-    //更新基础数据类型
+    updateUsername(username: string) {
+      this.userInfo.username = username;
+    },
+    updatePhoto(photo: string) {
+      this.userInfo.photo = photo;
+    },
+    updateIslogin(is_login: boolean) {
+      this.userInfo.is_login = is_login;
+    },
+    updatePullingInfo(pulling_info: boolean) {
+      this.userInfo.pulling_info = pulling_info;
+    },
     updateToken(token: string) {
-      this.token = token;
+      this.userInfo.token = token;
+    },
+    logout() {
+      this.userInfo = {
+        id: '001',
+        username: 'chenjx',
+        photo: 'https://www.jj.com',
+        is_login: false,
+        pulling_info: false,
+        token: '',
+      };
     },
   },
 });
